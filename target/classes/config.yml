@@ -1,0 +1,91 @@
+# ╔══════════════════════════════════════════╗
+# ║        SecurityLogin  v2.3.9           ║
+# ║    Créateur : LeGameurPSN_YT             ║
+# ╚══════════════════════════════════════════╝
+
+# ── Timers de kick ────────────────────────────────────────────────────────────
+
+# Délai en secondes avant kick si le joueur inscrit ne se connecte pas
+time-login: 120
+
+# Délai en secondes avant kick si le joueur non inscrit ne s'enregistre pas
+time-register: 300
+
+# ── Captcha ───────────────────────────────────────────────────────────────────
+
+# Durée de validité du captcha en secondes (0 = utiliser time-register)
+captcha-expire-seconds: 300
+
+# ── Sécurité ─────────────────────────────────────────────────────────────────
+security:
+
+  # 1. Nombre max de tentatives de /login avant kick
+  max-login-attempts: 5
+
+  # 2. Anti-brute force : kick si X tentatives en Y secondes
+  brute-force-attempts: 3
+  brute-force-window-seconds: 2
+
+  # 4. Mot de passe minimum
+  min-password-length: 6
+
+# ── Clé AES-128 ──────────────────────────────────────────────────────────────
+# 16 caractères exactement — CHANGE CETTE CLÉ — NE JAMAIS PARTAGER
+aes-secret-key: "SecLogin_Key_2024"
+
+# ── Messages ─────────────────────────────────────────────────────────────────
+messages:
+  prefix: "&8[&bSecurityLogin&8] &r"
+
+  # Auth
+  not-logged-in: "&cTu dois te connecter ! Utilise &f/login <password>"
+  not-registered: "&cTu n'es pas inscrit ! Utilise &f/register <password> <confirm>"
+  already-logged-in: "&eTu es déjà connecté !"
+  login-success: "&aConnexion réussie ! Bienvenue sur SecurityLogin."
+  login-wrong-password: "&cMot de passe incorrect !"
+  login-too-many-attempts: "&cTrop de tentatives échouées. Tu as été expulsé."
+  login-banned: "&cTu as été banni temporairement pour tentatives répétées. Contacte un staff."
+  login-brute-force: "&cTrop de tentatives trop rapides. Reconnecte-toi dans quelques instants."
+
+  # Register
+  register-success: "&aCompte créé avec succès ! Tu es maintenant connecté."
+  register-passwords-mismatch: "&cLes mots de passe ne correspondent pas !"
+  register-already-exists: "&cTu as déjà un compte ! Utilise &f/login <password>"
+
+  # Captcha
+  captcha-required: "&eUn captcha est requis avant de t'inscrire !"
+  captcha-required-before-register: "&cValide d'abord le captcha avec &f/captcha <code>"
+  captcha-success: "&aCode captcha correct ! Tu peux maintenant utiliser &f/register"
+  captcha-wrong: "&cCode incorrect. Vérifie bien le code affiché."
+  captcha-expired: "&cTon captcha a expiré. Reconnecte-toi."
+  captcha-already-validated: "&eTu as déjà validé ton captcha !"
+  captcha-reloaded: "&aNouveau captcha généré pour &f%player%"
+  captcha-bypass: "&aCaptcha ignoré pour &f%player%"
+  captcha-bypass-notify: "&eUn admin a ignoré ton captcha. Tu peux maintenant utiliser /register"
+
+  # Mot de passe
+  password-too-short: "&cMot de passe trop court ! Minimum &f%min% &ccaractères."
+  password-too-simple: "&cMot de passe trop simple ! Choisis quelque chose de plus sécurisé."
+
+  # Change / Reset pass
+  change-pass-success: "&aMot de passe changé avec succès !"
+  change-pass-wrong: "&cAncien mot de passe incorrect !"
+  reset-pass-no-account: "&cCe joueur n'a pas de compte !"
+  reset-pass-confirm: "&eConfirmer la réinitialisation du mot de passe de &f%player% &e? Tape &a/oui &eou &c/non"
+  reset-pass-success: "&aMot de passe de &f%player% &aréinitialisé !"
+  reset-pass-cancelled: "&7Réinitialisation annulée."
+
+  # Staff
+  unban-login-success: "&aJoueur &f%player% &adébloqué."
+  unban-login-notify: "&aUn staff t'a débloqué. Tu peux maintenant te connecter."
+  player-not-found: "&cJoueur introuvable."
+
+  # Kick
+  kick-login-timeout: "&cTu as été expulsé pour inactivité (connexion)"
+  kick-register-timeout: "&cTu as été expulsé pour inactivité (inscription)"
+
+  # Général
+  no-permission: "&cTu n'as pas la permission d'utiliser cette commande !"
+  player-only: "&cCette commande est réservée aux joueurs !"
+  invalid-usage: "&cUsage invalide !"
+  time-updated: "&aTimer mis à jour : &f%seconds% secondes"
