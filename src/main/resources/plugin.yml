@@ -1,0 +1,48 @@
+name: ArcadiaMC_Login
+version: ${project.version}
+main: fr.arcadiamc.login.ArcadiaMCLogin
+api-version: 1.20
+authors: [LeGameurPSN_YT]
+description: "Plugin de login sécurisé — Créateur : LeGameurPSN_YT — AES-128, captcha, anti brute-force"
+
+commands:
+  login:
+    description: Se connecter avec son mot de passe
+    usage: /login <password>
+  register:
+    description: Créer son compte (nécessite le captcha)
+    usage: /register <password> <confirm-password>
+  captcha:
+    description: Valider le captcha (ou sous-commandes admin)
+    usage: /captcha <code> | /captcha reload <pseudo> | /captcha bypass <pseudo>
+  change-pass:
+    description: Changer son mot de passe
+    usage: /change-pass <ancien> <nouveau> <confirmer>
+  reset-pass:
+    description: Réinitialiser le mot de passe d'un joueur (staff)
+    usage: /reset-pass <pseudo>
+    permission: arcadiamc.login.staff
+  login-attempts:
+    description: Voir les tentatives échouées d'un joueur
+    usage: /login-attempts <pseudo>
+    permission: arcadiamc.login.staff
+  unban-login:
+    description: Débloquer un joueur banni par brute-force
+    usage: /unban-login <pseudo>
+    permission: arcadiamc.login.staff
+  timelogin:
+    description: Définir le délai avant kick si non connecté
+    usage: /timelogin <secondes>
+    permission: arcadiamc.login.admin
+  timeregister:
+    description: Définir le délai avant kick si non inscrit
+    usage: /timeregister <secondes>
+    permission: arcadiamc.login.admin
+
+permissions:
+  arcadiamc.login.staff:
+    description: Peut réinitialiser les mots de passe et gérer les bans login
+    default: op
+  arcadiamc.login.admin:
+    description: Peut configurer les timers et gérer les captchas (inclut les droits staff)
+    default: op
